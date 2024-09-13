@@ -18,8 +18,8 @@ function Converter() {
     const [leftToRight, setLeftToRight] = React.useState(true);
     const handleClick = () => {
         setValues({
-            from: !leftToRight ? values.to : values.from,
-            to: !leftToRight ? values.from : values.to,
+            from: values.to,
+            to: values.from,
         });
         setLeftToRight(!leftToRight);
     };
