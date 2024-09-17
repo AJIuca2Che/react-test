@@ -28,23 +28,50 @@ function Converter() {
         });
     };
 
+    const handleOnChange = (event) => {
+        const value = event.target.value;
+        const field = event.target.name
+        
+        setValues({
+            ...values,
+           [field]: {
+            ...values[field],
+            amount: value,
+           } 
+        })
+    };
+
+    const handleOnSelect = (event) => {
+        const field = event.target.name;
+        const value = event.target.value
+        
+        setValues({
+            ...values,
+           [field]: {
+            ...values[field],
+            coin: value,
+           } 
+        })
+    }
+
     return (
         <Row className="g-2">
             <Col md>
                 <InputGroup>
                     <FloatingLabel controlId="fromInput" label="from">
                         <Form.Control 
-                        type="number" 
+                        name='from'
+                        type="text" 
                         placeholder="0" 
-                        value={values.from.amount} 
-                        defaultValue={values.from.amount}
+                        value={values.from.amount}
+                        onChange={handleOnChange}
                         />
                     </FloatingLabel>
-                    <FloatingLabel controlId="from" label="Coin">
-                        <Form.Select value= {values.from.coin}>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                    <FloatingLabel controlId="from" label="Coin" onChange={handleOnSelect}>
+                        <Form.Select value= {values.from.coin} name ="from" label= "Coin">
+                            <option value="1">BTC</option>
+                            <option value="2">ETH</option>
+                            <option value="3">SOL</option>
                         </Form.Select>
                     </FloatingLabel>
                 </InputGroup>
@@ -56,17 +83,18 @@ function Converter() {
                 <InputGroup>
                     <FloatingLabel controlId="toInput" label="to">
                         <Form.Control 
-                        type="number" placeholder="0" 
-                        value={values.to.amount} 
-                        defaultValue={values.to.amount} 
-                        
+                        name='to'
+                        type="text" 
+                        placeholder="0" 
+                        value={values.to.amount}
+                        onChange={handleOnChange}
                         />
                     </FloatingLabel>
                     <FloatingLabel controlId="to" label="Coin">
-                        <Form.Select value= {values.to.coin}>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <Form.Select value= {values.to.coin} name="to" label="Coin" onChange={handleOnSelect}>
+                            <option value="1">BTC</option>
+                            <option value="2">ETH</option>
+                            <option value="3">SOL</option>
                         </Form.Select>
                     </FloatingLabel>
                 </InputGroup>
