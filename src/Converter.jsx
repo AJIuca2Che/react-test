@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const initialState = {
-    from: 100,
-    to: 500,
+    from: 0,
+    to: 0,
 }
 
 function Converter() {
