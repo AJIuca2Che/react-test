@@ -1,4 +1,4 @@
-import Coins from "./Coins";
+import Coins from "../Coins";
 import Table from 'react-bootstrap/Table';
 function SearchResult () {
     return (
