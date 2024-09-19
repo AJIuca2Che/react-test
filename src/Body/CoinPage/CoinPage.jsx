@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import CoinMetrics from "./CoinMetrics";
 import CoinChart from "./CoinChart";
 import ChartPeriods from './ChartPeriods';
+import ChartIncreaseSize from "./ChartIncreaseSize";
+
 function CoinPage () {
     return (
 <>
@@ -15,7 +17,7 @@ function CoinPage () {
             <Col md = {8}>
             <ChartPeriods/>
             <CoinChart />
-            
+            <ChartIncreaseSize/>
             </Col>
         </Row>
 </>
