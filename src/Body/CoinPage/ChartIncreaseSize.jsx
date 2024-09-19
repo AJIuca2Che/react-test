@@ -15,7 +15,7 @@ function ChartIncreaseSize() {
           Increase Chart Size
         </Button>
   
-        <Modal show={show} onHide={handleClose} fullscreen>
+        <Modal show={show} onHide={handleClose} size='xl'>
           <Modal.Header closeButton>
             <Modal.Title>Increased Chart</Modal.Title>
           </Modal.Header>
