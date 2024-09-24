@@ -18,11 +18,11 @@ function GlobalData() {
         </tr>
         <tr>
           <td>Vol 24h</td>
-          <td>{globalData.volume_24h_usd}</td>
+          <td>{globalData.volume_24h_usd}$</td>
         </tr>
         <tr>
           <td>Market Cap</td>
-          <td>{globalData.market_cap_usd}</td>
+          <td>{globalData.market_cap_usd}$</td>
         </tr>
       </tbody>
     </Table>
