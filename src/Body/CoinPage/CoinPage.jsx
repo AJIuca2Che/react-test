@@ -7,17 +7,19 @@ import CoinChart from "./CoinChart";
 import ChartPeriods from './ChartPeriods';
 import ChartIncreaseSize from "./ChartIncreaseSize";
 import { getCoinById } from "../../services/api";
-function CoinPage () {
+
+
+function CoinPage ({selectedCurrency}) {
     const [coinData, setCoinData] = React.useState({})
     React.useEffect(() => {
-        getCoinById('btc-bitcoin').then(setCoinData);
-    }, []);
+        getCoinById("btc-bitcoin",selectedCurrency.name ).then(setCoinData);
+    }, [selectedCurrency]);
     return (
 <>
     <CoinPriceSection/>
         <Row>
             <Col md = {4}>
-            <CoinMetrics {...coinData} />
+            <CoinMetrics {...coinData} currency={selectedCurrency} />
             </Col>
             <Col md = {8}>
             <ChartPeriods/>
