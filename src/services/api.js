@@ -20,3 +20,15 @@ export const getCoinById = async (id) => {
 
   return await response.json();
 }
+
+
+export const getHistoricalData = async ({id, currency, start, interval}) => {
+  const params = new URLSearchParams ({
+    quotes: currency,
+    start,
+    interval,
+  });
+
+  const response = await fetch(`${apiUrl}/tickers/${id}/historical?${params}`);
+  return await response.json();
+}
