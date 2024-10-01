@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/AJIuca2Che/react-test",
+  "homepage": "https://ajiuca2che.github.io/react-test/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
