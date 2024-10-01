@@ -1,27 +1,31 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import { getCoinList } from "../services/api";
-import Alert from 'react-bootstrap/Alert';
+import Alert from "react-bootstrap/Alert";
 import PriceNumber from "./PriceNumber";
+import { useNavigate } from "react-router-dom";
 
-
-function ListCoins( {selectedCurrency}) {
+function ListCoins({ selectedCurrency }) {
   const [coinList, setCoinList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
+  const navigate = useNavigate();
+
   React.useEffect(() => {
+    setIsLoading(true);
     getCoinList(selectedCurrency.name).then((data) => {
       setCoinList(data.slice(0, 100));
-      setIsLoading(false)
+      setIsLoading(false);
     });
   }, [selectedCurrency]);
 
   if (isLoading)
     return (
       <Alert key={"primary"} variant={"primary"}>
-      Loading...
+        Loading
       </Alert>
-    )
+    );
+
   return (
     <Table striped bordered hover>
       <thead>
@@ -34,19 +38,36 @@ function ListCoins( {selectedCurrency}) {
           <th>7d</th>
           <th>Volume(24h)</th>
           <th>MarketCap</th>
+          <th>Max supply</th>
         </tr>
       </thead>
       <tbody>
-        {coinList.map(coin => (
-          <tr key={coin.rank}>
+        {coinList.map((coin) => (
+          <tr key={coin.rank} onClick={() => navigate("/coin/" + coin.id)}>
             <td>{coin.rank}</td>
             <td>{coin.name}</td>
-            <td><PriceNumber value = {coin.quotes[selectedCurrency.name]?.price} symbol = {selectedCurrency.symbol}/></td>
-            <td>{coin.quotes[selectedCurrency.name]?.percent_change_1h}%</td>
-            <td>{coin.quotes[selectedCurrency.name]?.percent_change_24h}%</td>
-            <td>{coin.quotes[selectedCurrency.name]?.percent_change_7d}%</td>
-            <td><PriceNumber value = {coin.quotes[selectedCurrency.name]?.volume_24h} symbol = {selectedCurrency.symbol}/></td>
-            <td><PriceNumber value = {coin.quotes[selectedCurrency.name]?.market_cap} symbol = {selectedCurrency.symbol}/></td>
+            <td>
+              <PriceNumber
+                value={coin.quotes[selectedCurrency.name]?.price}
+                symbol={selectedCurrency.symbol}
+              />
+            </td>
+            <td>{coin.quotes[selectedCurrency.name]?.percent_change_1h}</td>
+            <td>{coin.quotes[selectedCurrency.name]?.percent_change_24h}</td>
+            <td>{coin.quotes[selectedCurrency.name]?.percent_change_7d}</td>
+            <td>
+              <PriceNumber
+                value={coin.quotes[selectedCurrency.name]?.volume_24h}
+                symbol={selectedCurrency.symbol}
+              />
+            </td>
+            <td>
+              <PriceNumber
+                value={coin.quotes[selectedCurrency.name]?.market_cap}
+                symbol={selectedCurrency.symbol}
+              />
+            </td>
+            <td>{coin.max_supply}</td>
           </tr>
         ))}
       </tbody>

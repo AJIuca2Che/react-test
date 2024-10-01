@@ -1,26 +1,26 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { periods } from "./constants";
 
-const periods = ['1d', '7d', '30d', '1q', '1y', 'YTD', 'Max'];
+function ChartPeriods({ selectedPeriod, setSelectedPeriod }) {
 
-function ChartPeriods() {
-    const [selected,setSelected] = React.useState(periods[0]);
+  const handleClick = (period) => {
+    setSelectedPeriod(period);
+  };
 
-    const handleClick = (period) => {
-        setSelected(period);
-    }
   return (
     <ButtonGroup>
-        {periods.map((period) => (
-            <Button key = {period} 
-            variant = 'secondary' 
-            onClick={() => handleClick(period)}
-            active= {selected === period}
-            >
-                {period}
-            </Button>
-        ) )}
+      {periods.map((period) => (
+        <Button
+          key={period.label}
+          variant="secondary"
+          onClick={() => handleClick(period)}
+          active={selectedPeriod.label === period.label}
+        >
+          {period.label}
+        </Button>
+      ))}
     </ButtonGroup>
   );
 }
