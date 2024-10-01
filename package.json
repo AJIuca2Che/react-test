@@ -1,13 +1,16 @@
 {
-  "name": "crypto-data",
+  "name": "react-test",
   "private": false,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://github.com/AJIuca2Che/react-test",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
