@@ -2,14 +2,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CoinPriceChange from './CoinPriceChange';
+
 function CoinPriceSection() {
   return (
     <Container>
       <Row>
         <Col>Bitcoin</Col>
-        <Col>56 000$</Col>
+        <Col>56 000 $</Col>
         <Col>
-        <CoinPriceChange/>
+          <CoinPriceChange />
         </Col>
       </Row>
     </Container>
