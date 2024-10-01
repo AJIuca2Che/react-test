@@ -4,10 +4,13 @@ import { getCoinList } from "../services/api";
 import Alert from "react-bootstrap/Alert";
 import PriceNumber from "./PriceNumber";
 import { useNavigate } from "react-router-dom";
+import ErrorModal from "./ErrorModal";
+
 
 function ListCoins({ selectedCurrency }) {
   const [coinList, setCoinList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [errorMessage,setErrorMessage] = React.useState(null);
 
   const navigate = useNavigate();
 
@@ -15,8 +18,9 @@ function ListCoins({ selectedCurrency }) {
     setIsLoading(true);
     getCoinList(selectedCurrency.name).then((data) => {
       setCoinList(data.slice(0, 100));
-      setIsLoading(false);
-    });
+      
+    }).catch(error => setErrorMessage("Coin list is not avalible:" + error.toString()))
+    .finally(() => setIsLoading(false));
   }, [selectedCurrency]);
 
   if (isLoading)
@@ -27,6 +31,7 @@ function ListCoins({ selectedCurrency }) {
     );
 
   return (
+    <>
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -72,6 +77,8 @@ function ListCoins({ selectedCurrency }) {
         ))}
       </tbody>
     </Table>
+    <ErrorModal errorMessage={errorMessage} show = {!!errorMessage} handleClose={() => setErrorMessage(null)}/>
+  </>
   );
 }
 
