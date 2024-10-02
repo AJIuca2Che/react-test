@@ -13,6 +13,11 @@ import moment from "moment";
 import { useParams } from 'react-router-dom';
 import Converter from './Converter';
 import ErrorModal from "../ErrorModal";
+
+
+
+
+
 function CoinPage({ selectedCurrency }) {
   const [chartModalShow, setChartModalShow] = React.useState(false);
   const [coinData, setCoinData] = React.useState({});

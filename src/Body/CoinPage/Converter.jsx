@@ -7,19 +7,27 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
-const initialState = {
-  from: {
-    amount: 100,
-    coin: 2,
-  },
-  to: {
-    amount: 500,
-    coin: 1,
-  },
-};
 
-function Converter() {
+const initialState = {
+    from: {
+      amount: 0,
+      coin: 1,
+    },
+    to: {
+      amount: 0,
+      coin: 1,
+    },
+  };
+
+
+
+function Converter(selectedCurrency) {
   const [values, setValues] = React.useState(initialState);
+  
+
+
+
+
 
   const handleClick = () => {
     setValues({
@@ -73,9 +81,7 @@ function Converter() {
               name="from"
               onChange={handleOnSelect}
             >
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value = "1"></option>
             </Form.Select>
           </FloatingLabel>
         </InputGroup>
@@ -100,9 +106,7 @@ function Converter() {
               name="to"
               onChange={handleOnSelect}
             >
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="1">EUR</option>
             </Form.Select>
           </FloatingLabel>
         </InputGroup>
