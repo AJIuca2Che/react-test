@@ -5,13 +5,13 @@ import Alert from "react-bootstrap/Alert";
 import PriceNumber from "./PriceNumber";
 import { useNavigate } from "react-router-dom";
 import ErrorModal from "./ErrorModal";
+import { useSelector } from "react-redux";
 
-
-function ListCoins({ selectedCurrency }) {
+function ListCoins() {
   const [coinList, setCoinList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [errorMessage,setErrorMessage] = React.useState(null);
-
+const selectedCurrency = useSelector((state) => state.selectedCurrency)
   const navigate = useNavigate();
 
   React.useEffect(() => {

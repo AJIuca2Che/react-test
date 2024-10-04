@@ -21,7 +21,7 @@ const initialState = {
 
 
 
-function Converter(selectedCurrency) {
+function Converter() {
   const [values, setValues] = React.useState(initialState);
   
 
